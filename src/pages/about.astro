@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'About Page';
+
+const identity = {
+    firstname: 'Mclnoot', 
+    country: 'Israel',
+    occupation: 'Technical Director',
+    hobbies: ["Traditional art", "Coding", "Cooking", "Writing", "Digital art"],
+};
+
+const skills = [
+    { name: 'HTML', level: 'Advanced' },
+    { name: 'CSS', level: 'Advanced' },
+    { name: 'JavaScript', level: 'Intermediate' },
+    { name: 'Python', level: 'Intermediate' },
+    { name: 'Astro', level: 'Beginner' },
+];
+
+const happy = true;
+const finished = true;
+const goal = 1;
+
+const skillColor = `rgb(46, 11, 49)`;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2>... and my new Astro site!</h2>
+
+  <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+
+  <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <h2>About Me</h2>
+    <ul>
+        <li>My name is {identity.firstname}.</li>
+        <li>I am from {identity.country} and I work as a {identity.occupation}.</li>
+        <li>In my free time, I enjoy {identity.hobbies.join(', ')}</li>
+        {identity.hobbies.length >= 2 &&
+        <li>But i mainly do {identity.hobbies[0]} and {identity.hobbies[1]}.</li> }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+        {skills.map((skill) => (
+            <li class="skill">{skill.name} - {skill.level}</li>
+        ))}
+    </ul>
+{happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{goal === 1 ? <p>My goal is to finish in 1 day.</p> : <p>My goal is not 1 day.</p>}
+
+</BaseLayout>
